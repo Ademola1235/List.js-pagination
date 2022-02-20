@@ -1,7 +1,7 @@
 //jshint esversion:6
 
 
-var options = {
+var options = { 
   valueNames: [
     `name`,
     {
@@ -13,7 +13,7 @@ var options = {
     },
     {
       name: `image`,
-      attr: `src`
+      attr: `data-src`
     }
   ],
   page: 3,
@@ -69,7 +69,7 @@ hackerList.add([{
   link: `https://www.imdb.com/title/tt3480822/`,
   image: `assets/blackWidow.png`
 }, {
-  name: `Spiderman: Far From Home`,
+  name: `Spiderman: No Way Home`,
   id: 11,
   link: `https://www.imdb.com/title/tt10872600/`,
   image: `assets/spiderman.png`
@@ -144,3 +144,34 @@ document.body.addEventListener(`mouseover`, function() {
     disableLink();
   }
 });
+
+var firstList = document.getElementsByTagName('img')[0];
+// Create a data-img-full attribute:
+const att = document.createAttribute("data-src");
+// Set the value of the data-img-full attribute:
+att.value = "assets/finch.jpg";
+// Add the style attribute to the first image:
+firstList.setAttributeNode(att);
+
+function lazy(e) {
+  var img = document.querySelectorAll('img');
+setInterval(() => {
+
+  for (let i = 0; i < img.length; i++) {
+
+    let url = img[i].getAttribute('data-src');
+    img[i].setAttribute("src", url);
+    img[i].classList.add('noAnimation');
+
+    setInterval(() => {
+      img[i].classList.add('no-animation');
+    }, 4000);//To prevent fade-in from recurring
+  }
+  
+}, 2500);
+
+  console.log(e)
+}
+lazy();
+
+window.addEventListener('scroll', lazy);
