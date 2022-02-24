@@ -53,7 +53,6 @@ body{
   width: 100%;
   display: block;
   transition: .3s;
-  animation: fade 1s linear 2.5s 1;
 }
 .figcaption{
   font-size: 15px;
@@ -200,12 +199,4 @@ footer a:hover{
  .pagination li a{
    padding-top: 7px;
  }
-}
-@keyframes fade {
-  from{
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
 }
